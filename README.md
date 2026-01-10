@@ -1,161 +1,144 @@
-# economics-of-remote-work-city-opportunity
-Analyzing global city-level remote work demand, mobility, and economic sustainability using data-driven opportunity and fragility indices (2022–2025).
+The Economics of Remote Work: City-Level Opportunity & Fragility (U.S.)
+Executive Summary
 
-## Spine Dataset: Remote Job Demand (LinkedIn)
+Remote work has reshaped where people live and work—but growth in remote jobs does not always translate into sustainable city-level opportunity.
+This project analyzes U.S. metropolitan areas (MSAs) to distinguish true opportunity from structural fragility, combining labor demand, migration flows, and cost-of-living pressures into interpretable economic indicators.
 
-**Source:** Public LinkedIn job postings dataset (Kaggle)
+The key contribution is the Remote Work Fragility Index (RWFI), which flags cities experiencing rapid growth paired with rising costs and unstable migration—separating hype from long-term viability.
 
-**Purpose:**  
-To measure city-level remote job demand across U.S. cities using job postings
-as a proxy for labor demand.
+Problem Statement
 
-**Processing Summary:**
-- Raw job-level data aggregated to City × Month
-- Remote jobs identified using explicit remote indicators
-- Low-volume city-months removed to reduce noise
-- Final output represents a 2024 snapshot of demand
+Most discussions around “best cities for remote work” rely on rankings or demand alone, ignoring affordability and migration stability.
 
-**Limitations:**
-- Job postings do not represent actual employment
-- Analysis limited to one year due to data availability
+This project answers:
 
-Step 1–3: Data Preparation (Locked)
+Which U.S. cities offer sustainable remote-work opportunity, not just short-term growth?
 
-Cleaned and standardized raw datasets
+Where is remote-work growth structurally fragile due to cost pressure and mobility volatility?
 
-Aggregated job postings from job-level → MSA × month
+How do opportunity patterns differ regionally and structurally, not just city-by-city?
 
-Aligned all sources using a standardized city_state key
+Data Sources
 
-Enforced one-row-per-MSA-per-month rule
+City- and metro-level datasets were aggregated and standardized, including:
 
-These steps are intentionally locked to preserve reproducibility.
+Remote job postings and labor demand
 
-Step 4: Exploratory Data Analysis (EDA)
+In-migration and out-migration flows
 
-Notebook: 02_eda.ipynb
+Cost-of-living components (housing, food, transportation, taxes, etc.)
 
-What was explored
+Median family income
 
-Distribution of remote job demand across MSAs
+All datasets were cleaned, merged, and locked prior to analysis to ensure reproducibility.
 
-Migration intensity vs affordability
+Methodology (End-to-End Pipeline)
 
-Opportunity vs cost tradeoffs
+Step 1–2: Data loading, cleaning, aggregation
+Step 3: Exploratory Data Analysis (EDA)
+Step 4: Feature engineering (economic indices)
+Step 5: Modeling & structural analysis
+Step 6: Validation, robustness checks, regime classification
 
-Identification of outliers and early signals
+Each step is implemented in a dedicated notebook to maintain clarity and auditability.
 
-Key takeaway
+Key Indices (Core Contributions)
 
-Remote work demand varies widely across cities, but high demand does not automatically imply sustainability.
+Remote Work Demand Index (RWDI)
+Measures relative intensity of remote job demand by city.
 
-Step 5: Feature Engineering (Core Differentiator)
+Cost-Adjusted Attractiveness Score
+Evaluates opportunity after accounting for cost-of-living pressure.
 
-Notebook: 04_feature_engineering.ipynb
+Mobility Intensity Score (MIS)
+Captures migration churn and population movement dynamics.
 
-Indices Built
+Remote Work Opportunity Index (RWOI)
+Composite indicator of demand and affordability.
 
-RWDI — Remote Work Demand Index
+⭐ Remote Work Fragility Index (RWFI) (Signature Feature)
+Identifies cities with:
 
-MIS — Mobility Intensity Score
+Fast demand growth
 
-CPI — Cost Pressure Index
+Rising cost pressure
 
-RWOI — Remote Work Opportunity Index
+Unstable migration patterns
 
-⭐ RWFI — Remote Work Fragility Index (signature feature)
-
-Why RWFI matters
-
-RWFI captures cities where:
-
-opportunity interacts with cost pressure and mobility, creating structural risk.
-
-This separates early-stage opportunity from overheated growth.
-
-Step 6: Modeling & Analysis
-
-Notebook: 05_modeling_analysis.ipynb
-
-Regression Analysis
-
-Validated index construction
-
-Identified drivers of fragility
-
-Key result:
-Cost pressure and mobility intensity drive fragility — not opportunity alone.
-
-Clustering
-
-Cities were segmented into four structural archetypes:
-
-High Opportunity / Low Fragility
-
-High Opportunity / High Fragility
-
-Stable but Low Growth
-
-Pressure Without Payoff
-
-This revealed that only a minority of cities achieve resilient opportunity.
-
-Step 7: Evaluation & Validation
-
-Notebook: 06_evaluation_validation.ipynb
-
-What was validated
-
-Sanity checks against known high-cost metros
-
-Identification of emerging vs high-risk cities (with names)
-
-Opportunity vs fragility scatter validation
-
-State-level regime map (choropleth)
-
-Correlation analysis to confirm indices are not redundant
-
-Key insight
-
-Opportunity and fragility are distinct dimensions.
-Geographic patterns show emerging regions tend to be secondary metros, not legacy hubs.
+RWFI highlights where growth may be unsustainable, even when demand appears strong.
 
 Key Findings
 
-Remote work opportunity is widespread, but resilient opportunity is rare
+Remote work demand alone is a weak signal without affordability and migration context.
 
-Cost pressure and migration volatility amplify fragility
+Several high-growth MSAs show elevated fragility, driven by housing costs outpacing income growth.
 
-Many cities remain stable but peripheral to remote work growth
+Some mid-tier cities exhibit lower hype but higher sustainability, offering more resilient opportunity.
 
-Emerging cities are often non-obvious and early-stage
+State-level aggregation reveals regional regimes, not a uniform national pattern.
 
-Evaluating opportunity without fragility leads to misleading conclusions
+Visual Evidence
 
-Limitations
+This repository includes static visualizations illustrating:
 
-Cross-sectional analysis (not causal)
+Opportunity vs. Fragility trade-offs across MSAs
 
-U.S.-only MSAs
+State-level regime classifications (Stable / Neutral / Fragile)
 
-Cost metrics reflect a specific household type
+Cluster-based city archetypes
 
-Aggregation masks intra-city variation
-
-These constraints are acknowledged and do not affect comparative insights.
+These visuals support decision-oriented interpretation, not rankings.
 
 Why This Project Matters
 
-This project demonstrates:
+This analysis reframes remote work from a ranking problem to a sustainability problem.
 
-End-to-end data science workflow
+Use cases:
 
-Economic reasoning, not just modeling
+Job seekers: identify cities with durable opportunity, not just short-term hype
 
-Careful validation and uncertainty awareness
+Employers: understand labor-market risk when expanding remote hiring
 
-Ability to translate complex signals into decision-relevant insights
+Policy analysts: detect regions vulnerable to cost-driven displacement
 
-Relevant for roles in:
-Data Analytics · Economics · Urban Policy · Finance · Consulting
+The framework translates economic theory into measurable decision metrics.
+
+Limitations & Next Steps
+
+Analysis is limited to available job posting and migration data windows.
+
+Time-series depth can be expanded for stronger causal inference.
+
+Future work could integrate wage distributions, firm-level data, or zoning constraints.
+
+Repository Structure
+economics-of-remote-work-city-opportunity/
+│
+├── 00_project_notes.ipynb
+├── 01_data_loading.ipynb
+├── 02_eda.ipynb
+├── 03_feature_engineering.ipynb
+├── 04_modeling_analysis.ipynb
+├── 05_evaluation_validation.ipynb
+│
+├── data/
+│   ├── raw/
+│   └── processed/
+│
+└── visuals/
+
+Skills Demonstrated
+
+Economic feature engineering
+
+City-level labor market analysis
+
+Migration & cost-pressure modeling
+
+Interpretable index design
+
+Executive-ready analytical communication
+
+✅ Project Status
+
+Analysis complete. Dataset locked. Results validated.
