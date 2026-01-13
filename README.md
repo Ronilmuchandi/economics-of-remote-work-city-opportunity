@@ -58,7 +58,7 @@ Adjusts job demand by cost-of-living pressure.
 **Remote Work Opportunity Index (RWOI)**  
 Composite measure of job demand, affordability, and mobility.
 
-**⭐ Remote Work Fragility Index (RWFI) — Signature Feature**  
+**Remote Work Fragility Index (RWFI) — Signature Feature**  
 Identifies cities experiencing:
 - Rapid job growth  
 - Rising costs  
